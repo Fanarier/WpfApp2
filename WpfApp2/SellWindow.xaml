@@ -1,0 +1,66 @@
+﻿<Window x:Class="WpfApp2.SellWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="Sells" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="600"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListView x:Name="ListSell" Grid.Column="0" Margin="0,10,20,10" FontSize="20" SelectionChanged="ListSell_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=Id}" Width="0"/>
+                    <GridViewColumn Header="Название вклада" DisplayMemberBinding="{Binding Path=Name}" Width="160"/>
+                    <GridViewColumn Header="Дата вклада" DisplayMemberBinding="{Binding Path=SellingDate}" Width="150"/>
+                    <GridViewColumn Header="Кол-во акций" DisplayMemberBinding="{Binding Path=CountOfSold}" Width="70"/>
+                    <GridViewColumn Header="процент" DisplayMemberBinding="{Binding Path=PriceOfSold}" Width="100"/>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Path=VenorCode}" Width="50"/>
+                </GridView>
+            </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Изменить" Click="MenuItem_Click"/>
+                    <MenuItem Header="Удалить" Click="MenuItem_Click_1"/>
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Row="0" Margin="5">
+                <Label Content="Введите вклада"/>
+                <TextBox x:Name="NameSell"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1" Margin="5">
+                <Label Content="Введите дату"/>
+                <DatePicker x:Name="SellingDateSell"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="2" Margin="5">
+                <Label Content="Введите число"/>
+                <TextBox x:Name="CountOfSoldSell"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="3" Margin="5">
+                <Label Content="Введите сумму"/>
+                <TextBox x:Name="PriceOfSoldSell"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="4" Margin="5">
+                <Label Content="Введите ID"/>
+                <TextBox x:Name="VenorCodeSell"/>
+            </StackPanel>
+            <Button Name="ButtonSell" Content="Добавить" Grid.Row="5" Grid.RowSpan="3" Margin="30 30" Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</Window>
